@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+    <head>
+        <title>surprise</title>
+        <meta name="viewport"
+        content="width=device-width,
+        initial-scale=1.0">
+        <style>
+            
+            body {
+    background-color: rgb(40, 29, 23);
+    margin: 0;
+}
+
+.box {
+    position: relative;
+    z-index: 2;
+    padding: 25px;
+    margin: 100px auto;
+    width: 250px;
+    text-align: center;
+    color: azure;
+}
+
+.our {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    opacity: 0.2;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.box > img:not(.our) {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 15px;
+    margin: 20px auto;
+    display: block;
+}
+.buttons{
+                margin-top: 35px;
+               display: flex;
+               justify-content: center;
+               gap:2-px;
+            }
+            button{
+                padding: 10px 20px;
+                border: none;
+                border-radius: 10px;
+                margin:5px;
+                font-size: large;
+            }
+            #nobut{
+                transition:all 0.4s ease;
+                
+            }
+
+        </style>
+    </head>
+    <body>
+        <div class="box">
+            <img src="c:\Users\jenisha\OneDrive\Documents\surprise\ours2.jpeg" class="our">
+             <img src="c:\Users\jenisha\OneDrive\Documents\surprise\light sad.jpeg">
+            <h1>Do you love me??🥺🥺</h1>
+            <div class="buttons">
+        <button id="yesbut">Yes😚</button>
+        <button id="nobut">No😳</button>
+            </div>
+        </div>
+    </body>
+    <script>
+       const yesbut=document.getElementById("yesbut");
+        const nobut=document.getElementById("nobut");
+        yesbut.addEventListener("click",function(){
+            window.location.href="next.html";
+        });
+      
+        nobut.addEventListener("mouseover",function(){
+            const x = Math.random()*700 -350;
+            const y=Math.random()*500-250;
+            nobut.style.transform=`translate(${x}px, ${y}px)`;
+        });
+    </script>
+</html>
