@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+```
+<title>Our Memories ❤️</title>
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: Arial, sans-serif;
+
+        overflow-x: hidden;
+
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        background-color: rgb(40, 29, 23);
+
+        padding: 30px 15px;
+    }
+
+    .background {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: -2;
+        opacity: 0.2;
+    }
+
+    .gallery-container {
+        width: 100%;
+        max-width: 900px;
+        text-align: center;
+        margin: 0 auto;
+    }
+
+    h1 {
+        color: #fff5e6;
+        font-size: 38px;
+        margin-bottom: 25px;
+        text-shadow: 0 3px 10px #000;
+    }
+
+    .gallery {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 18px;
+    }
+
+    .photo {
+        position: relative;
+        height: 210px;
+        overflow: hidden;
+        border-radius: 18px;
+        cursor: pointer;
+
+        background: #fff;
+        padding: 7px;
+
+        box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+
+        transition: transform 0.4s ease,
+                    box-shadow 0.4s ease;
+    }
+
+    .photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 13px;
+
+        transition: transform 0.5s ease;
+    }
+
+    /* Hover effect */
+    .photo:hover {
+        transform: translateY(-10px) rotate(2deg) scale(1.03);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.6);
+    }
+
+    .photo:hover img {
+        transform: scale(1.12);
+    }
+
+    /* Heart */
+    .heart {
+        position: absolute;
+        top: 10px;
+        right: 12px;
+
+        font-size: 25px;
+        opacity: 0;
+        transform: scale(0);
+
+        transition: 0.3s;
+    }
+
+    .photo:hover .heart {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    /* Fullscreen popup */
+    .popup {
+        display: none;
+
+        position: fixed;
+        inset: 0;
+
+        background: rgba(0,0,0,0.85);
+
+        justify-content: center;
+        align-items: center;
+
+        z-index: 1000;
+    }
+
+    .popup img {
+        max-width: 90%;
+        max-height: 85%;
+
+        border-radius: 20px;
+
+        box-shadow: 0 0 40px rgba(255,255,255,0.3);
+
+        animation: zoom 0.4s ease;
+    }
+
+    @keyframes zoom {
+        from {
+            transform: scale(0.5);
+            opacity: 0;
+        }
+
+        to {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+
+    .close {
+        position: absolute;
+
+        top: 20px;
+        right: 30px;
+
+        color: white;
+        font-size: 40px;
+
+        cursor: pointer;
+    }
+
+    /* Image below gallery */
+    .image-box {
+        position: relative;
+
+        width: 70%;
+        height: 70%;
+
+        max-width: 90%;
+        padding: 100px;
+
+        margin: 120px auto 80px;
+
+        overflow: hidden;
+
+        border-radius: 20px;
+    }
+
+    .image-box img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 20px;
+    }
+
+    .text {
+        position: absolute;
+
+        top: 50%;
+        left: 50%;
+
+        transform: translate(-50%, -50%);
+
+        width: 70%;
+        max-height: 80%;
+
+        text-align: center;
+
+        color: white;
+
+        font-size: 20px;
+        line-height: 1.5;
+
+        overflow: hidden;
+        overflow-wrap: break-word;
+
+        text-shadow: 2px 2px 5px black;
+    }
+
+    .text h2 {
+        font-size: 30px;
+    }
+
+    .text p {
+        margin: 0;
+    }
+
+    /* Mobile */
+    @media (max-width: 700px) {
+
+        .gallery {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .photo {
+            height: 170px;
+        }
+
+        h1 {
+            font-size: 30px;
+            color: #ede7e7;
+        }
+
+        .image-box {
+            width: 90%;
+            height: 300px;
+            margin-top: 100px;
+        }
+
+        .text {
+            width: 82%;
+            font-size: 15px;
+        }
+    }
+</style>
+```
+
+</head>
+
+<body>
+
+```
+<audio id="birthdayMusic" autoplay loop>
+    <source src="music/aud.mp3" type="audio/mpeg">
+</audio>
+
+<img src="ours2.jpeg" class="background">
+
+<div class="gallery-container">
+
+    <h1>Our Little Memories baby🥹😘</h1>
+
+    <div class="gallery">
+
+        <div class="photo" onclick="openPhoto('photo1.jpg')">
+            <img src="b.jpeg">
+            <span class="heart">💋</span>
+        </div>
+
+        <div class="photo" onclick="openPhoto('photo2.jpg')">
+            <img src="mmm.jpeg">
+            <span class="heart">💋</span>
+        </div>
+
+        <div class="photo" onclick="openPhoto('photo3.jpg')">
+            <img src="m.jpeg">
+            <span class="heart">💋</span>
+        </div>
+
+        <div class="photo" onclick="openPhoto('photo4.jpg')">
+            <img src="mmmmmmmm.jpeg">
+            <span class="heart">💋</span>
+        </div>
+
+        <div class="photo" onclick="openPhoto('photo5.jpg')">
+            <img src="mmmmmmmmmmmmmmmmm.jpeg">
+            <span class="heart">💋</span>
+        </div>
+
+        <div class="photo" onclick="openPhoto('photo6.jpg')">
+            <img src="mmmm.jpeg">
+            <span class="heart">💋</span>
+        </div>
+
+        <div class="photo" onclick="openPhoto('photo7.jpg')">
+            <img src="WhatsApp Image 2026-09-21 at 9.24.19 PM.jpeg">
+            <span class="heart">💋</span>
+        </div>
+
+        <div class="photo" onclick="openPhoto('photo8.jpg')">
+            <img src="WhatsApp Image 2026-09-21 at 9.24.18 PM.jpeg">
+            <span class="heart">💋</span>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- IMAGE BELOW PHOTO GALLERY -->
+
+<div class="image-box">
+
+    <img src="WhatsApp Image 2026-09-22 at 10.40.05 PM.jpeg">
+
+    <div class="text">
+        <h1>HAPPY BIRTHDAY PATTUMA!!</h1>
+        <p>
+           Unaku intha song nayabagam irukathu nu eanaku thariyum😌..but intha song rommba special, itha kakumbothu namma golden days than nayabagam varum coz nee eanaku 1st dedicate panna song🫠. 
+           
+           jai chloo , Happy Birthday da en thangamaee.. 
+Intha website panna eanaku 10 days aachu ipom than finish panan. Nee eanaku romba special unnoda intha birthday ah na inum special ah eanala mudija alavuku pananum nu try panan. Ithu unaku pudichuruka.. ithu unna happy aakucha nu thariyala but na mudija alavuku try panan.. Unnoda intha special aana day la unaku na 19 wishes tharan..nee eanna katalum na saivan. En chellakutty finally teenage ah cross panran🥹🥹eapadi en kutty baby seekiram big boy aanan.. en thangamaee namma life run aagitae Iruku.. ipadiyae fast ah run pani un kitta na vanthuduvan. Same eanakum 4 years la 22 aagidum. Namma seekiram kalyanam panikalam 🤌🏻🤌🏻 .nee katamathiri unaku unna mathiri cute aah baby girl kudukuran.. eanaku unna vita yarum illa and unakum eanna vita yarum illa namma renduparum oru happy aana life ah live panalam chloo   
+Unnakaga na inum naraya pananum nu nanachan but panna mudiyala ithukae eanaku 10 days aachu na pananum nu nanachathula 10% than panirukan... Unna na naraya hurt panirukan , kashtapaduthirukan, feel panna vachirukan.... Im very sorry di thangamaeee 🥹na inimal panna matan panna matan nu solli solli panran.. un BD la irunthu en chellakutty kaga inimal na phycho ah iruka matan... Na maybe change aagalam but mudija avaluku Apadi illama pathukuran 
+
+       And unaku eanna kashtam vanthalum na un kuda irupan chloo nee kakuratha na unaku panuvan.. en kitta ealamae share panu unaku na than da punda... En kitta eathayum sollama poogatha unnaku aluganum na en kitta va en malla paduthuko nalla cry panu eanna hug paniko un problem lam sollu na unna pathukuran da chloo... Same namma future la yum eanna problem vanthalum seanthu atha solve panuvom ok va?? 
+
+           Namma love eavalo special laa..... Eanaku un malla avalooooooooo love and unaku en malla avaloooooooooo love 😘😘 I'm very proud and very lucky to be your girl 
+
+   
+   Happy birthday my cute hubby 🥹🥹🫂🫂
+        </p>
+    </div>
+
+</div>
+
+<!-- POPUP -->
+
+<div class="popup" id="popup" onclick="closePhoto()">
+
+    <span class="close">&times;</span>
+
+    <img id="popupImage">
+
+</div>
+
+<script>
+
+    function openPhoto(photo) {
+
+        document.getElementById("popupImage").src = photo;
+
+        document.getElementById("popup").style.display = "flex";
+    }
+
+
+    function closePhoto() {
+
+        document.getElementById("popup").style.display = "none";
+    }
+
+</script>
+```
+
+</body>
+
+</html>
